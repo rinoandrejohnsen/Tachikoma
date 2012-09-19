@@ -1,0 +1,22 @@
+﻿<Window x:Class="Tachikoma.Shell" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:inf="clr-namespace:Tachikoma.Common.Infrastructure;assembly=Tachikoma.Common.Infrastructure"
+        xmlns:cal="http://www.codeplex.com/CompositeWPF"
+        Title="Tachikoma" 
+        Height="600" 
+        Width="1000"
+        Style="{StaticResource ShellStyle}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TabControl ItemContainerStyle="{StaticResource ShellTabItemStyle}" cal:RegionManager.RegionName="{x:Static inf:RegionNames.MainRegion}" FlowDirection="RightToLeft">
+            <TabItem Header="Johnsen"></TabItem>
+            <TabItem Header="Andre"></TabItem>
+            <TabItem Header="Rino"></TabItem>
+        </TabControl>
+    </Grid>
+</Window>
