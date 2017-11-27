@@ -12,14 +12,12 @@
 // <summary></summary>
 // ***********************************************************************
 
-using Microsoft.Practices.Prism.ViewModel;
-
 namespace Tachikoma.ViewModels
 {
     /// <summary>
     /// Class ShellViewModel
     /// </summary>
-    public class ShellViewModel : NotificationObject
+    public class ShellViewModel
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="ShellViewModel" /> class.

@@ -12,9 +12,8 @@
 // <summary></summary>
 // ***********************************************************************
 
-using Microsoft.Practices.Prism.Modularity;
-using Microsoft.Practices.Prism.UnityExtensions;
-using Microsoft.Practices.Unity;
+using Prism.Grace.Wpf;
+using Prism.Modularity;
 using Tachikoma.Modules.Ghost;
 using Tachikoma.Modules.Neurochip;
 using Tachikoma.ViewModels;
@@ -24,7 +23,7 @@ namespace Tachikoma
     /// <summary>
     /// Class Bootstrapper
     /// </summary>
-    class Bootstrapper : UnityBootstrapper
+    class Bootstrapper : GraceBootstrapper
     {
         /// <summary>
         /// Creates the shell or main window of the application.
@@ -37,7 +36,7 @@ namespace Tachikoma
         /// attached property from XAML.</remarks>
         protected override System.Windows.DependencyObject CreateShell()
         {
-            Shell shell = Container.Resolve<Shell>();
+            Shell shell = Container.Locate<Shell>();
             shell.Show();
             
             return shell;
@@ -50,7 +49,8 @@ namespace Tachikoma
         protected override void ConfigureContainer()
         {
             base.ConfigureContainer();
-            this.Container.RegisterType<ShellViewModel, ShellViewModel>(new Microsoft.Practices.Unity.ContainerControlledLifetimeManager());
+
+            this.Container.Configure(c => c.Export<ShellViewModel>().Lifestyle.Singleton());
         }
 
         /// <summary>

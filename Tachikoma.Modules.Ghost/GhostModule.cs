@@ -12,9 +12,9 @@
 // <summary></summary>
 // ***********************************************************************
 
-using Microsoft.Practices.Prism.Modularity;
-using Microsoft.Practices.Prism.Regions;
-using Microsoft.Practices.Unity;
+using Grace.DependencyInjection;
+using Prism.Modularity;
+using Prism.Regions;
 using Tachikoma.Modules.Ghost.Views;
 
 namespace Tachikoma.Modules.Ghost
@@ -27,7 +27,7 @@ namespace Tachikoma.Modules.Ghost
         /// <summary>
         /// The container
         /// </summary>
-        private IUnityContainer container;
+        private DependencyInjectionContainer container;
         /// <summary>
         /// The region manager
         /// </summary>
@@ -38,7 +38,7 @@ namespace Tachikoma.Modules.Ghost
         /// </summary>
         /// <param name="container">The container.</param>
         /// <param name="regionManager">The region manager.</param>
-        public GhostModule(IUnityContainer container, IRegionManager regionManager)
+        public GhostModule(DependencyInjectionContainer container, IRegionManager regionManager)
         {
             this.container = container;
             this.regionManager = regionManager;
@@ -49,7 +49,7 @@ namespace Tachikoma.Modules.Ghost
         /// </summary>
         public void Initialize()
         {
-            this.regionManager.RegisterViewWithRegion("MainRegion", () => this.container.Resolve<GhostView>());
+            this.regionManager.RegisterViewWithRegion("MainRegion", () => this.container.Locate<GhostView>());
         }
     }
 }
